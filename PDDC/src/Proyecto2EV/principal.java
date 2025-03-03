@@ -1,8 +1,15 @@
 package Proyecto2EV;
 
 import java.util.ArrayList;
+
+import Proyecto2EV.entidades.libros;
+import Proyecto2EV.entidades.usuarioAdmin;
+import Proyecto2EV.entidades.usuarios;
+import Proyecto2EV.interfaces.gestionUsuarios;
+import Proyecto2EV.logica.gestionUsuariosImp;
 public class principal {
     public static void main(String[] args) {
+		gestionUsuarios gestionUsuarios = new gestionUsuariosImp();
 		ArrayList <libros> arrayLibros = new ArrayList <libros> ();
 		ArrayList <usuarios> arrayUsuarios = new ArrayList <usuarios> ();
 		usuarios admin = new usuarioAdmin("admin", "admin", true);
@@ -13,9 +20,6 @@ public class principal {
 		arrayLibros.add(libro2);
 		gestionUsuarios.gestion(arrayUsuarios);
 		mainMenu.paginaPrincipal(arrayLibros);
-		//Preguntas kuro
-		//Como hacer el bucle para buscar todos los libros
-		//Como meter las interfaces
 	}
 
 }

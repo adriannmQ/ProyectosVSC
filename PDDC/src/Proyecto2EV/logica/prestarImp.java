@@ -1,11 +1,16 @@
-package Proyecto2EV;
+package Proyecto2EV.logica;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class prestar {
+import Proyecto2EV.entidades.libros;
+import Proyecto2EV.entidades.menus;
+import Proyecto2EV.interfaces.prestar;
+import Proyecto2EV.interfaces.validadoresLibros;
 
-    public static void prestarMenu(ArrayList<libros> arrayLibros, Scanner sc) {
+public class prestarImp implements prestar {
+
+    public void prestarMenu(ArrayList<libros> arrayLibros, Scanner sc) {
         int opcion;
         do {
             menus.menuPrestar();
@@ -27,9 +32,10 @@ public class prestar {
         } while (opcion != 3);
     }
 
-    public static void prestarLibro(ArrayList <libros> arrayLibros, Scanner sc) {
+    public void prestarLibro(ArrayList <libros> arrayLibros, Scanner sc) {
         System.out.println("Introduce el ISBN del libro que quieres prestar");
         String isbn = sc.next();
+        validadoresLibros validadoresLibros = new validadoresLibrosImp();
         if (validadoresLibros.validarISBN(isbn)) {
             if (validadoresLibros.buscarLibro(isbn, arrayLibros)) {
                 for (libros libro : arrayLibros) {
@@ -60,9 +66,10 @@ public class prestar {
         }
     }
 
-    public static void devolverLibro(ArrayList <libros> arrayLibros, Scanner sc) {
+    public void devolverLibro(ArrayList <libros> arrayLibros, Scanner sc) {
         System.out.println("Introduce el ISBN del libro que quieres devolver");
         String isbn = sc.next();
+        validadoresLibros validadoresLibros = new validadoresLibrosImp();
         if (validadoresLibros.validarISBN(isbn)) {
             if (validadoresLibros.buscarLibro(isbn, arrayLibros)) {
                 for (libros libro : arrayLibros) {
@@ -85,7 +92,10 @@ public class prestar {
                                     System.out.println("No se puede devolver mas libros de los que hay registrados en la biblioteca");
                                 }
                         }
-                    } 
+                    } else {
+                        System.out.println("No hay libros prestados de con ese ISBN");
+                        break;
+                    }
                 }
             } else {
                 System.out.println("El libro no esta en la base de datos o no hay libros prestados");

@@ -1,13 +1,16 @@
-package Proyecto2EV;
+package Proyecto2EV.logica;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class validadoresLibros {
+import Proyecto2EV.entidades.libros;
+import Proyecto2EV.interfaces.validadoresLibros;
+
+public class validadoresLibrosImp implements validadoresLibros {
 
 
-    public static boolean buscarLibro(String isbn,  ArrayList <libros> arrayLibros) {
+    public boolean buscarLibro(String isbn,  ArrayList <libros> arrayLibros) {
         boolean encontrado = false;
         for (libros libro : arrayLibros) {
             if (libro.getIsbn().equals(isbn)) {
@@ -18,18 +21,8 @@ public class validadoresLibros {
         return encontrado;
     }
 
-    public static boolean buscarLibroDuplicado(String isbn, ArrayList <libros> arrayLibros) {
-        boolean encontrado = false;
-        for (libros libro : arrayLibros) {
-            if (libro.getIsbn().equals(isbn)) {
-                encontrado = true;
-                break;
-            }
-        }
-        return encontrado;
-    }
 
-    public static boolean validarISBN(String isbn) {
+    public boolean validarISBN(String isbn) {
         // Definimos un patrón para validar el ISBN-13 (13 dígitos numéricos)
         String regex = "^(978|979)\\d{10}$";//esto es para definir el formato isbn y guardarlo en regex
         Pattern pattern = Pattern.compile(regex);//esto es para declarar un patron y asignarselo a 

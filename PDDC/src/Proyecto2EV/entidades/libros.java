@@ -1,15 +1,16 @@
-package Proyecto2EV;
+package Proyecto2EV.entidades;
 
 public class libros {
     protected String isbn, nombre, autor, genero;
 	protected int cantidad, prestado;
 	
 	protected libros() {
-		
+		//este es el constructor vacio
 	}
 
 
 	public libros(String isbn, String nombre, String autor, String genero, int prestado, int cantidad) {
+        //este es el constructor con todos los atributos que quiero que se usuen para  crear un libro(todos)
         this.isbn = isbn;
         this.nombre = nombre;
         this.autor = autor;
@@ -18,6 +19,7 @@ public class libros {
         this.cantidad = cantidad;
     }
 
+    // Getters y setters 
 	public String getIsbn() {
         return isbn;
     }

@@ -3,10 +3,20 @@ package Proyecto2EV;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Proyecto2EV.entidades.libros;
+import Proyecto2EV.entidades.menus;
+import Proyecto2EV.interfaces.mainOptions;
+import Proyecto2EV.interfaces.prestar;
+import Proyecto2EV.logica.mainOptionsImp;
+import Proyecto2EV.logica.prestarImp;
+
+
 public class mainMenu {
 
     public static void paginaPrincipal(ArrayList <libros> arrayLibros) {
         Scanner sc = new Scanner(System.in);
+        mainOptions mainOptions = new mainOptionsImp();
+        prestar prestar  = new prestarImp();
         int opcionMenu;
         do{
             menus.menuPrincipal();
@@ -32,7 +42,7 @@ public class mainMenu {
                 System.out.println("La opcion que has marcado no es valida");
                 break;
             }
-        }while(opcionMenu != 6);
+        }while(opcionMenu != 7);
         
     }
         

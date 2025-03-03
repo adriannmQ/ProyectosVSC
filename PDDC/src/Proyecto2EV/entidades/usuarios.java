@@ -1,4 +1,4 @@
-package Proyecto2EV;
+package Proyecto2EV.entidades;
 
 public class usuarios {
     private String usuario;

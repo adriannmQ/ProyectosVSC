@@ -1,12 +1,19 @@
-package Proyecto2EV;
+package Proyecto2EV.logica;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class mainOptions {
+import Proyecto2EV.entidades.libros;
+import Proyecto2EV.entidades.menus;
+import Proyecto2EV.interfaces.mainOptions;
+import Proyecto2EV.interfaces.validadoresLibros;
+
+public class mainOptionsImp implements mainOptions {
     
-    public static void insertarLibro(ArrayList <libros> arrayLibros, Scanner sc) {
+    @Override
+    public void insertarLibro(ArrayList <libros> arrayLibros, Scanner sc) {
         System.out.println("Introduce el ISBN del libro");
         String isbn = sc.next();
+        validadoresLibros validadoresLibros = new validadoresLibrosImp();
         if (validadoresLibros.validarISBN(isbn)) {
             if (!validadoresLibros.buscarLibro(isbn, arrayLibros)) {
                 System.out.println("Introduce el titulo del libro");
@@ -33,9 +40,11 @@ public class mainOptions {
         }
     }
 
-    public static void Modificarlibro(ArrayList <libros> arrayLibros, Scanner sc) {
+    @Override
+    public void Modificarlibro(ArrayList <libros> arrayLibros, Scanner sc) {
         System.out.println("Introduce el ISBN del libro que quieres modificar");
         String isbn = sc.next();
+        validadoresLibros validadoresLibros = new validadoresLibrosImp();
         if (validadoresLibros.validarISBN(isbn)) {
             if (validadoresLibros.buscarLibro(isbn, arrayLibros)) {
                 for (libros libro : arrayLibros) {
@@ -80,9 +89,11 @@ public class mainOptions {
         }
     }
 
-    public static void eliminarLibro( ArrayList <libros> arrayLibros, Scanner sc) {
+    @Override
+    public void eliminarLibro( ArrayList <libros> arrayLibros, Scanner sc) {
         System.out.println("Introduce el ISBN del libro que quieres eliminar");
         String isbn = sc.next();
+        validadoresLibros validadoresLibros = new validadoresLibrosImp();
         if (validadoresLibros.validarISBN(isbn)) {
             if (validadoresLibros.buscarLibro(isbn, arrayLibros)) {
                 for (libros libro : arrayLibros) {
@@ -100,9 +111,11 @@ public class mainOptions {
         }
     }
 
-    public static void mostrarInformacionLibro(ArrayList <libros> arrayLibros, Scanner sc) {
+    @Override
+    public void mostrarInformacionLibro(ArrayList <libros> arrayLibros, Scanner sc) {
         System.out.println("Introduce el ISBN del libro que quieres ver");
         String isbn = sc.next();
+        validadoresLibros validadoresLibros = new validadoresLibrosImp();
         if (validadoresLibros.validarISBN(isbn)) {
             if (validadoresLibros.buscarLibro(isbn, arrayLibros)) {
                 for (libros libro : arrayLibros) {
@@ -124,7 +137,8 @@ public class mainOptions {
         }
     }
 
-    public static void mostrarLibros(ArrayList <libros> arrayLibros, Scanner sc) {
+    @Override
+    public void mostrarLibros(ArrayList <libros> arrayLibros, Scanner sc) {
         for (libros libro : arrayLibros) {
             System.out.println("ISBN: " + libro.getIsbn());
             System.out.println("Nombre: " + libro.getNombre());
@@ -132,9 +146,9 @@ public class mainOptions {
             System.out.println("Genero: " + libro.getGenero());
             System.out.println("Copias totales: " + libro.getCantidad());
             System.out.println("Copias prestadas: " + libro.getPrestado());
-            System.out.println(" ");
-            break;
+            System.out.println("\n\n");
         }
+        return;
     }
 
 }
